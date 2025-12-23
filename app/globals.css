@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900;
+}
+
+a {
+  @apply text-primary underline-offset-2;
+}
+
+a:hover {
+  @apply text-primary-light;
+}
+
+.card {
+  @apply rounded-lg bg-white shadow-sm border border-slate-200;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors;
+}
+
+.btn-primary {
+  @apply bg-primary text-white hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-offset-2;
+}
+
+.btn-secondary {
+  @apply bg-slate-100 text-slate-800 hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-offset-2;
+}
+
+.badge {
+  @apply inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-medium bg-slate-100 text-slate-800;
+}
+
+.badge-primary {
+  @apply bg-primary/10 text-primary-dark;
+}
