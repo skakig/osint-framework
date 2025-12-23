@@ -1,51 +1,50 @@
-# OSINT Framework
+# OSINT Workbench
 
-http://osintframework.com
+A modern interface for browsing the [OSINT Framework](https://osintframework.com) collection. The UI provides search, tagging, categories, tool details, and local favorites while keeping the original resource structure intact.
 
-## Notes
-OSINT framework focused on gathering information from free tools or resources. The intention is to help people find free OSINT resources. Some of the sites included might require registration or offer more data for $$$, but you should be able to get at least a portion of the available information for no cost.
+## Getting Started
 
-I originally created this framework with an information security point of view. Since then, the response from other fields and disciplines has been incredible. I would love to be able to include any other OSINT resources, especially from fields outside of infosec. Please let me know about anything that might be missing!
+> Note: Installing dependencies requires internet access to npm. If your environment blocks outgoing connections, you can still regenerate the tool index (see below), but `npm install` will not succeed.
 
-Please visit the framework at the link below and good hunting!
+1. Install dependencies
+   ```bash
+   npm install
+   ```
+2. Generate the tool index from the upstream `public/arf.json`
+   ```bash
+   npm run generate:tools
+   ```
+3. Start the development server
+   ```bash
+   npm run dev
+   ```
+   Visit http://localhost:3000 to use the workbench.
 
-https://osintframework.com
+## Features
+- Category sidebar sourced from the ARF hierarchy
+- Full-text search and tag filters for (T), (D), (R), (M)
+- Tool cards with quick open links
+- Detail modal with links, notes, and copy-to-clipboard for commands when provided
+- Favorites stored in `localStorage`
+- API route at `/api/tools` to consume the generated catalog
 
-### Legend
-(T) - Indicates a link to a tool that must be installed and run locally  
-(D) - Google Dork, for more information: <a href="https://en.wikipedia.org/wiki/Google_hacking">Google Hacking</a>  
-(R) - Requires registration  
-(M) - Indicates a URL that contains the search term and the URL itself must be edited manually  
-
-### For Update Notifications
-Follow me on Twitter: @jnordine - https://twitter.com/jnordine  
-Watch or star the project on Github: https://github.com/lockfale/osint-framework
-
-### Suggestions, Comments, Feedback
-Feedback or new tool suggestions are extremely welcome!  Please feel free to submit a pull request or open an issue on github or reach out on Twitter.
-
-### Contribute with a GitHub Pull Request
-For new resources, please ensure that the site is available for public and free use.
-<ol start="1">
-  <li>Update the arf.json file in the format shown below. If this isn't the first entry for a folder, add a comma to the last closing brace of the previous entry.</li>
-</ol>
-
+## Regenerating the catalog
+The catalog is deterministically generated from `public/arf.json`.
+```bash
+npm run generate:tools
 ```
-{
-  "name": "Example Name",
-  "type": "url",
-  "url": "http://example.com"
-}
+This writes `data/tools.json`, which the UI and API consume.
+
+## Testing
+Basic parser coverage is provided via Vitest:
+```bash
+npm test
 ```
 
-<ol start="2">
-  <li>Submit pull request!</li>
-</ol>
+## Contributing
+- Keep the meaning and structure of the upstream OSINT list intact
+- Update `public/arf.json` first, then regenerate `data/tools.json`
+- Run tests before opening a PR when possible
 
-Thank you!
-
-## OSINT Framework Website
-
-https://osintframework.com
-
-Happy Hunting!
+## Notes on safety
+The UI only exposes links and copy-to-clipboard helpers. No commands are executed automatically; any run examples are displayed for manual use.
