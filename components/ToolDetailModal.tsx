@@ -1,6 +1,7 @@
 'use client';
 
 import { Tool } from '../src/types';
+import { RunnerPanel } from './RunnerPanel';
 
 interface Props {
   tool?: Tool | null;
@@ -100,6 +101,8 @@ export function ToolDetailModal({ tool, onClose }: Props) {
             </button>
           )}
         </div>
+
+        <RunnerPanel tool={tool} />
       </div>
     </div>
   );

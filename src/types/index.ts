@@ -14,3 +14,24 @@ export interface Tool {
   notes?: string;
   platform?: string;
 }
+
+export interface AllowedTool {
+  id: string;
+  name: string;
+  description?: string;
+  image: string;
+  command: string[];
+  defaultArgs?: string[];
+  outputDir?: string;
+}
+
+export interface RunRequestBody {
+  toolId: string;
+  args?: string[];
+}
+
+export interface ArtifactDescriptor {
+  name: string;
+  path: string;
+  size: number;
+}

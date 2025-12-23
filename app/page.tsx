@@ -62,6 +62,11 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen px-4 py-6 md:px-8">
+      <div className="mb-4 rounded border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
+        OSINT data must be collected legally and ethically. Verify permission before running any
+        automated collection, respect terms of service, and never target systems you do not own or
+        administer.
+      </div>
       <header className="mb-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
           <p className="text-sm uppercase tracking-wide text-primary">OSINT Collection</p>

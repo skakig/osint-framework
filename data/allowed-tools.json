@@ -1,0 +1,20 @@
+[
+  {
+    "id": "network-whois",
+    "name": "WHOIS Lookup",
+    "description": "Lookup registration information for a domain using whois.",
+    "image": "docker.io/curlimages/curl:8.7.1",
+    "command": ["whois"],
+    "defaultArgs": ["example.com"],
+    "outputDir": "/output"
+  },
+  {
+    "id": "dns-dig",
+    "name": "DNS Query (dig)",
+    "description": "Query DNS records using dig with sane defaults.",
+    "image": "docker.io/cytopia/dns-tools:latest",
+    "command": ["dig"],
+    "defaultArgs": ["example.com"],
+    "outputDir": "/output"
+  }
+]
