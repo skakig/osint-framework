@@ -26,6 +26,7 @@ A modern interface for browsing the [OSINT Framework](https://osintframework.com
 - Tool cards with quick open links
 - Detail modal with links, notes, and copy-to-clipboard for commands when provided
 - Favorites stored in `localStorage`
+- Case workspaces with deterministic search packs, evidence capture, and hypothesis tracking
 - API route at `/api/tools` to consume the generated catalog
 
 ## Regenerating the catalog
@@ -34,6 +35,21 @@ The catalog is deterministically generated from `public/arf.json`.
 npm run generate:tools
 ```
 This writes `data/tools.json`, which the UI and API consume.
+
+## Case workflow
+The case workspace is available at `/cases` and `/cases/[id]`.
+
+1. Open **Cases** and create a new case with subject name, optional location, keywords, usernames, and notes.
+2. The app creates a workspace with a deterministic **search pack** that groups suggested web, social, business, archive,
+   and image queries as clickable buttons and copyable strings.
+3. Use **Add evidence** on any case to log URLs, notes, tags, and source types; items are stored locally.
+4. Track hypotheses with confidence, status, contradictions, and linked evidence. An **AI assist** action suggests
+   next-step questions using existing evidence text (no web calls).
+5. All case data is stored in `localStorage` so it persists across refreshes.
+
+## Screenshots
+When you update UI surfaces, capture a screenshot from the running app (e.g., `npm run dev` and use the browser tooling)
+to illustrate the change in pull requests.
 
 ## Testing
 Basic parser coverage is provided via Vitest:
